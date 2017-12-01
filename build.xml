@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<project name="asms-web" default="war">
+
+ 
+ 
+ <target name="war" >
+  <!-- <war destfile="dist/asms-web.war" webxml="src/main/webapp/WEB-INF/web.xml">-->
+   <war destfile="K:/apache-tomcat-9.0.0.M21/apache-tomcat-9.0.0.M21/webapps/asms-web.war" webxml="src/main/webapp/WEB-INF/web.xml">
+   <fileset dir="src/main/webapp"/>
+   
+  </war>
+ </target>
+ 
+ <target name="clean">
+  <delete dir="dist" />
+ </target>
+ </project>

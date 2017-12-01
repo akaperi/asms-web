@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Akaperi Login</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon" />
+
+
+
+        <!-- Bootstrap files -->
+        <script src="../js/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="../js/bootstrap.min.js"></script>
+        <link type="text/css" rel="stylesheet" href="../css/bootstrap.min.css">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300, 400, 600, 700, 300italic, 400italic, 600italic' rel='stylesheet' type='text/css'>
+
+        <!--        perspective effect-->
+        <link href="../css/perspective/jquerysctipttop.css" rel="stylesheet" type="text/css">
+        <!--<script src="../js/jquery-3.2.1.min.js"></script>-->
+        <script src="../js/perspective/relativeMousePosition.js"></script>
+        <script src="../js/perspective/perspectiveEffectOnMouseOver.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.transit/0.9.12/jquery.transit.min.js"></script>
+        <script>
+        //      $(document).ready(function(){
+        ////			$(".maindiv").find(".divcenter").perspectiveEffectOnMouseOver();
+        //$(".divcenter").fadeIn(5000,linear);
+        //		});
+
+            $(document).ready(function () {
+               setTimeout(function () {
+                  frm_shw();// or fade, css display however you'd like.
+                }, 1000);
+            });
+
+            function frm_shw() {
+                $("form#login_form").css("transform", "scaley(1)");
+            }
+            
+            
+            
+            
+                 $(document).ready(function() {
+                $("body").backgroundCycle({
+                    imageUrls: [
+                        '../images/Akaperi-Banner-SMS-2.jpg',
+                        '../images/Akaperi-Banner-SMS-3.jpg',
+                        '../images/Akaperi-Banner-SMS-5.jpg'
+                    ],
+                    fadeSpeed: 2000,
+                    duration: 5000,
+                    backgroundSize: SCALING_MODE_COVER
+                });
+            });
+
+
+        </script>
+
+        <!--        text animation-->
+        <link type="text/css" rel="stylesheet" href="../css/textanimation/animate.min.css">
+
+<!--bg_fading-->
+<script type="text/javascript" src="../js/bgfading/background.cycle.js"></script>
+
+
+
+        <!-- Page In-line Js -->
+        <script type="text/javascript" src="../js/global_variable_api.js"></script>
+        <!--        <script type="text/javascript" src="../js/school_form_validation.js"></script>-->
+        <script type="text/javascript" src="../js/school_index.js"></script>
+        <script type="text/javascript" src="../js/school_reg_api.js"></script>
+
+        <!-- Page In-line Css -->
+        <link type="text/css" rel="stylesheet" href="../css/login_page.css">
+        <link type="text/css" rel="stylesheet" href="../css/common.css">
+
+        <!-- Form Support files -->
+        <!--        <script src="../js/jquery-ui.js"></script>
+                <link rel="stylesheet" href="../css/jquery-ui.css" />-->
+
+
+
+
+
+    </head>
+    <body class="log_in_sec">
+        <div class="maindiv">
+            <div class="col-sm-6">
+                <div class="divcenter">
+                    <form name="login_form" id="login_form">
+                        <div class="logininputs">
+                            <div class="loginheader">Login</div>
+                            <div class="col-xs-12">
+                                <label for="school_name">Username</label><span class="red_star"> </span>
+                                <input class="form-control" name="username" value="" id="username" type="text" maxlength="255" onblur="" placeholder="Username">    
+                                <span class="errmsg"></span> 
+                                <div class="errorMsg"></div>
+                            </div>
+
+                            <div class="col-xs-12">
+                                <label for="school_name">Password</label><span class="red_star"> </span>
+                                <input class="form-control" name="password" value="" id="password" type="password" maxlength="255" onblur="" placeholder="Password">    
+                                <span class="errmsg"></span> 
+                                <div class="errorMsg"></div>
+                            </div>
+                        </div>
+
+                        <div class="loginsubmit">
+                            <div class="col-sm-12 col-lg-12">
+
+                                <!--                                    <button class="btn btn-default reg_btn_change_color" type="submit" id="loginsubmit"> <i class="fa fa-paper-plane" aria-hidden="true">&nbsp;</i> Submit</button>-->
+                                <input type='button' id='loginsubmit' value='Submit'/>
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+
+
+            <div class="col-sm-6">
+                <div class="abtright">                   
+                    <h4>Every school deserves to be</h4><br>
+                    <span class="txt_normal">e-Enabled and stay in-tune</span><br>
+                    <span class="txt_rvrse">with advancements in</span><br>
+                    <h3>School Management System</h3> <br/>
+                    <span class="lwrcs">aka.school</span>
+
+
+                </div>
+            </div>
+        </div>
+        <script src="../js/textanimation/animatext.js"></script>
+        <script>
+//                                 $(".abtright").animatext({
+//  mode: "words",
+//  effect: 'tada',
+//  infinite: true,
+//  speed: 150,
+//  initDelay: 0,
+//timeToRelaunch: 2000
+//});
+
+
+
+$(document).ready(function () {
+$(".abtright h4").animatext({speed: 100,
+    effect: 'flipInX',
+    infinite: false,
+    onSuccess: function () {
+        $(".txt_normal").css("display", "block");
+        $(".txt_normal").animatext({
+            speed: 200,
+            onSuccess: function () {
+                $(".txt_rvrse").css("display", "block");
+                $(".txt_rvrse").animatext({speed: 100,
+                    effect: 'tada',
+                    reverse: true,
+                    infinite: false,
+                    onSuccess: function () {
+                        $(".abtright h3").css("display", "block");
+                        $(".abtright h3").animatext({speed: 150,
+                            effect: 'tada',
+                            random: true,
+                            infinite: false,
+                            onSuccess: function () {
+                                $(".abtright span.lwrcs").css("display", "block");
+                                $(".abtright span.lwrcs").animatext({speed: 200,
+                                    mode: "words",
+                                    effect: 'swing',
+                                    infinite: false});
+                            }
+                        });
+                    }
+                });
+            }
+        });
+    }
+});
+});
+
+
+        </script>
+
+
+
+
+    </body>
+</html>

@@ -1,0 +1,148 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+var global_server;
+var global_src;
+
+
+function getReligions(){
+    var username = localStorage.getItem('storeduser');
+    var password = localStorage.getItem('storedpw');
+
+    $.ajax({
+        type: "GET", //API method
+        url: global_server + 'user/religionTypes', // API URL
+        crossDomain: true,
+        contentType: 'application/json; odata=verbose',
+        dataType: 'json', // check with both one by one JSON and JSONP
+      //  var xhr = new XMLHttpRequest();
+        xhrFields:
+		{
+			withCredentials: true
+		},
+	beforeSend: function (xhr) {
+
+		 xhr.setRequestHeader('Authorization', 'Basic ' + btoa(username + ":" + password));
+		},
+        success: function (data) {
+            var content = "";
+
+            $.each(data.religionTypes, function (index, value) {
+                content = content + "<option value='" + value.religionTypesName + "' Serial_No='" + value.serialNo + "'>" + value.religionTypesName + "</option>";
+            });
+
+            $('#religion').append(content);
+        },
+
+    });
+}
+
+
+function getCasteTypes(){
+  var username = localStorage.getItem('storeduser');
+     var password = localStorage.getItem('storedpw');
+
+     $.ajax({
+         type: "GET", //API method
+         url: global_server + 'user/casteTypes', // API URL
+         crossDomain: true,
+         contentType: 'application/json; odata=verbose',
+         dataType: 'json', // check with both one by one JSON and JSONP
+         xhrFields:
+ 		{
+ 			withCredentials: true
+ 		},
+ 	beforeSend: function (xhr) {
+ 		xhr.setRequestHeader('Authorization', 'Basic ' + btoa(username + ":" + password));
+ 		},
+         success: function (data) {
+             var content = "";
+
+             $.each(data.casteTypes, function (index, value) {
+                 content = content + "<option value='" + value.subcasteTypesName + "' Serial_No='" + value.serialNo + "'>" +  value.subcasteTypesName + "</option>";
+             });
+
+             $('#caste').append(content);
+         }
+
+     });
+}
+
+
+
+
+
+
+
+
+//For Submit
+
+function sendPrimaryDetails(next_fs, current_fs) {
+alert("abba");
+
+
+			var retrievedObject = localStorage.getItem('storeduser');
+			var retrievedObject2 = localStorage.getItem('storedpw');
+      var domain=location.hostname;
+			var xhr = new XMLHttpRequest();
+			var formData;
+
+
+                          formData = JSON.stringify({
+                               "requestType": "create",
+                                "userRole" : "Teacher",
+                                "subRole" : "Teacher",
+                                "userDetails":{
+                                  "email":$("input#email_address").val(),
+
+                                    "teachingStaffDetails": {
+                                    "designation": $("#staff_designation").val(),
+                                    "bloodGroup":$("select#blood_group").val(),
+                                    "firstName":$("input#first_name").val(),
+                                    "middleName":$("input#middle_name").val(),
+                                    "lastName": $("input#last_name").val(),
+                                    "dateOfBirth": $("input#date_of_birth").val(),
+                                    "gender": $("input[name='radio']:checked"). val(),
+                                    "ageInYears": $("input#age_in_year").val(),
+                                    "contactNo": $("input#contact_number").val(),
+                                    "qualification": $("input#qualification").val(),
+                                    "religion": $("select#religion").val(),
+                                    "casteCategory": $("select#caste").val()
+                                }
+                          }
+
+                        })
+
+
+
+				$.ajax({
+					type: "POST",
+					url: global_server + 'user/register?domain='+domain,
+					data: formData,
+					crossDomain: true,
+					contentType: 'application/json; odata=verbose',
+					dataType: 'json', // check with both one by one JSON and JSONP
+					xhrFields:
+						{
+							withCredentials: true
+						},
+					beforeSend: function (xhr) {
+						xhr.setRequestHeader('Authorization', 'Basic ' + btoa(retrievedObject + ":" + retrievedObject2));
+						},
+					success: function (response) {
+            alert(response.status);
+            next_fs.show();
+            current_fs.hide();
+            alert("abbaaa");
+						},
+					error: function (response) {
+							alert(response.status);
+
+					}
+			});
+
+
+}

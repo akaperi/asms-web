@@ -1,0 +1,57 @@
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+function management_register_validation() {
+    var first_name = $('#first_name').val();
+    var role_dropdown = $('#role_dropdown').val();
+
+    var specials = /[*|\":<>[\]{}`\\()';@&$#]/;
+    var alphaExp = /^[a-zA-Z\s-, ]+$/;
+
+
+    // Role Dropdown
+    if (role_dropdown === 0) {
+        var error = "Please select from dropdown.\n";
+        $('#role_dropdown').addClass('red');
+        error = "Please select from dropdown.\n";
+        $('#role_dropdown').next('.errmsg').text(error).show();
+        valid = false;
+    } else {
+        $('#role_dropdown').removeClass('red');
+        $('#role_dropdown').next('.errmsg').hide();
+    }
+    // First Name
+    if (first_name === '') {
+        $('#first_name').addClass('red');
+        error = "Please enter text only.\n";
+        $('#first_name').closest(".form-control").next().text(error).show();
+        valid = false;
+    } else if (specials.test(first_name)) {
+        $('#first_name').addClass('red');
+        error = 'Special characters are not allowed';
+        $('#first_name').closest(".form-control").next().text(error).show();
+        valid = false;
+    } else if (!first_name.match(alphaExp)) {
+        error = 'Name should be alaphabets only';
+        $('#first_name').addClass('red');
+        $('#first_name').closest(".form-control").next().text(error).show();
+        valid = false;
+    } else if (!isNaN(first_name)) {
+        error = 'Numbers are not allowed';
+        $('#first_name').addClass('red');
+        $('#first_name').closest(".form-control").next().text(error).show();
+        valid = false;
+    } else if ((first_name.length > 100)) {
+        error = "This field have wrong length.\n";
+        $('#first_name').addClass('red');
+        $('#first_name').closest(".form-control").next().text(error).show();
+        valid = false;
+    } else {
+        $('#first_name').next().hide();
+        $('#first_name').removeClass('red');
+    }
+
+    return valid;
+}

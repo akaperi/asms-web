@@ -1,0 +1,22 @@
+apply plugin: 'maven'
+apply plugin: 'war'
+
+
+repositories {
+     maven { url "http://download.java.net/maven/2/" }
+     maven { url "http://repo.maven.apache.org/maven2" }
+    }
+    
+    
+    
+    task deploy(dependsOn: war) {
+    copy{
+        from "build/libs"
+
+         into "k:/apache-tomcat-9.0.0.M21/apache-tomcat-9.0.0.M21/webapps/"
+
+
+          
+        include "*.war"
+    }
+    }
