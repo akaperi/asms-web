@@ -18,7 +18,8 @@ $(document).ready(function () {
     $("#user_log_sub").click(function () {
         var username = $("input#username").val();
 		var password = $("input#password").val();
-		var domain=location.hostname ;
+		//var domain=location.hostname ;
+	    var domain="dev.akaperi.com" ;
 		
 
 
