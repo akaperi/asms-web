@@ -6,6 +6,6 @@
 
 
 
-global_server = '//10.10.10.2:8081/asms-services/';
+global_server = '//188.164.131.185:8080/asms-services/';
 
 global_src = global_server + 'countries/';
